@@ -51,7 +51,7 @@ class ZNDConstant(Optimizer):
                             prev_grad = torch.clone(d_p).detach()
                         I_buf.mul_(momentum).add_(prev_grad, alpha=1 - dampening)
                     if count == 0:
-                        d_p.add_(0.01)
+                        d_p.add_(np.random.uniform(0, 0.01))
                     count += 1      
                     if epoch < 100:    
                         d_p.add_(I_buf,alpha = self.I)
